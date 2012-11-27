@@ -10,7 +10,7 @@ html
   body
     #header
       h1
-        a(href="#")
+        a(href="/")
           i.ss-icon
             | dashboard
           |   Sentiment CP
@@ -18,49 +18,43 @@ html
       ul.nav.btn-group
         li.btn.btn-inverse
           a(title="", href="#")
-            i.icon.icon-cog"
+            i.ss-icon
+              | cog
             span.text
               |  Settings
             
     #sidebar
-      a(href="#").visible-phone
-        i.icon.icon-home
-        | Dashboard
       ul
-        li.active
-          a(href="#")
-            i.icon.icon-home
+        li#dashboardmenu
+          a(href="/#")
+            i.ss-icon
+              | home
             span
               | Dashboard
-        li.submenu
-          a(href="#")
-            i.icon.icon-th-list
+        li#departmentmenu
+          a(href="/#/departments")
+            i.ss-icon
+              | piechart
             span
-             | Department Reports
-          ul
-            li
-              a(href="#")
-                | Housekeeping
-            li
-              a(href="#")
-                | Service
-            li
-              a(href="#")
-                | Facilities
-            li
-              a(href="#")
-                | Location
-            li
-              a(href="#")
-                | Quality 
-            li
-              a(href="#")
-                | Price               
-        li
-          a(href="#")
-            i.icon.icon-tint
+             | Department Reports              
+        li#actionpointsmenu
+          a(href="/#/actionpoints")
+            i.ss-icon
+              | check
             span
               | Action Points
+        li#leaguetablemenu
+          a(href="/#/leaguetable")
+            i.ss-icon
+              | list
+            span
+              | League Table
+        li#latestcomplaintsmenu
+          a(href="/#/latestcomplaints")
+            i.ss-icon
+              | users
+            span
+              | Latest Reviews
     
     #content
     

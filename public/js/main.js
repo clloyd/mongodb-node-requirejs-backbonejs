@@ -4,6 +4,8 @@ require.config({
     underscore: 'libs/underscore',
     backbone: 'libs/backbone',
     jade: 'libs/jade',
+    unicorn: 'libs/unicorn',
+    bootstrap: 'libs/bootstrap',
     app_dir: 'app',
     views_dir: 'app/views'
   },
@@ -15,7 +17,11 @@ require.config({
     backbone: {
       deps: ["underscore", "jquery"],
       exports: "Backbone"
-    }
+    },
+
+    bootstrap: ["jquery"],
+
+    unicorn: ["jquery", "bootstrap"],
   }
 });
 

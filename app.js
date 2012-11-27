@@ -32,7 +32,7 @@ app.configure('development', function(){
 });
 
 app.configure('production', function(){
-  app.use(require('less-middleware')({ src: __dirname + '/public', once: true}));
+  app.use(require('less-middleware')({ src: __dirname + '/public'}));
 
   requirejs.optimize({
     appDir: "public/",
@@ -79,7 +79,6 @@ app.configure('production', function(){
 //Set up the config passed to the optimizer
 
 app.get('/', index.index);
-app.get('/#', index.index);
 
 
 http.createServer(app).listen(app.get('port'), function(){

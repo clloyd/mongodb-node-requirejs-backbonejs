@@ -15,7 +15,7 @@ define([
     initialize: function() {
   
       //Render Generic Widget
-      var widgethtml = WidgetTemplate({title: "Action Points", icon: "list", label: false})
+      var widgethtml = WidgetTemplate({title: "League Table", icon: "list", label: false})
       this.$el.html(widgethtml)
   
       this.$('.widget-content').addClass('nopadding')

@@ -15,6 +15,9 @@ ul.unstyledul {
   right: 1px;
   font-size: 17px;
 }
+.widget-title:hover {
+  cursor: pointer;
+}
 #complaints .piewrapper {
   text-align: center;
 }
@@ -61,4 +64,7 @@ ul.unstyledul {
 #latestcomplaints .reviewitem img {
   float: left;
   padding-right: 15px;
+}
+#sidebar ul li {
+  -webkit-transition: all 0.2s ease-in;
 }

@@ -18,12 +18,24 @@ define([
       var html = IndexTemplate({title: "Dashboard"})
       
       this.$el.html(html)
+      
+      //Check no other tab is active
+
+      _.each($('#sidebar li'), function(item, index) {
+        if ($(item).hasClass('active')) {
+          $(item).removeClass('active')
+        } 
+      })
+
       this.render()
     },
   
     render: function() {
       $('#content').html(this.el)
-  
+
+      //Make Dashboard Tab Active
+      $('li#dashboardmenu').addClass('active')
+
       new ComplaintsView
       new ActionPointsView
       new LeagueTableView

@@ -15,7 +15,7 @@ define([
     initialize: function() {
   
       //Render Generic Widget
-      var widgethtml = WidgetTemplate({title: "Complaints by Department", icon: "piechart", label: false})
+      var widgethtml = WidgetTemplate({title: "Latest Complaints", icon: "users", label: false})
       this.$el.html(widgethtml)
   
       this.$('.widget-content').html(LatestComplaintsTemplate())

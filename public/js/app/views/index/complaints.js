@@ -4,15 +4,22 @@ define([
   'backbone',
   'libs/jquery.peity',
 
+  //collections
+  'app_dir/collections/departments',
+
   //Templates
   'jade!views_dir/index/templates/widget',
   'jade!views_dir/index/templates/complaints',
   'jade!views_dir/index/templates/complaint-pie'
 
-], function($, _, Backbone, Peity, WidgetTemplate, ComplaintsTemplate, ComplaintPie){
+], function($, _, Backbone, Peity, DepartmentsCollection, WidgetTemplate, ComplaintsTemplate, ComplaintPie){
   var ComplaintsView = Backbone.View.extend({
   
     el: "#complaints",
+
+    events: {
+      'click .widget-title' : 'loadDepartments'
+    },
   
     initialize: function() {
   
@@ -21,8 +28,12 @@ define([
       this.$el.html(widgethtml)
   
       this.$('.widget-content').html(ComplaintsTemplate())
-  
+
       this.renderdata()
+    },
+
+    loadDepartments: function() {
+      Backbone.history.navigate("#/departments", { trigger: true })
     },
   
     renderdata: function() {
