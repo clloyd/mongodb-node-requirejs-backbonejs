@@ -1,0 +1,77 @@
+doctype 5
+html
+  head
+    title= title
+    meta(charset="UTF-8")
+    link(rel='stylesheet', href='/css/vendor.css')
+    link(rel='stylesheet', href='/css/style.css')
+
+    link(href='http://fonts.googleapis.com/css?family=Trocchi|Open+Sans', rel='stylesheet', type='text/css')
+  body
+    #header
+      h1
+        a(href="#")
+          i.ss-icon
+            | dashboard
+          |   Sentiment CP
+    #user-nav.navbar.navbar-inverse
+      ul.nav.btn-group
+        li.btn.btn-inverse
+          a(title="", href="#")
+            i.icon.icon-cog"
+            span.text
+              |  Settings
+            
+    #sidebar
+      a(href="#").visible-phone
+        i.icon.icon-home
+        | Dashboard
+      ul
+        li.active
+          a(href="#")
+            i.icon.icon-home
+            span
+              | Dashboard
+        li.submenu
+          a(href="#")
+            i.icon.icon-th-list
+            span
+             | Department Reports
+          ul
+            li
+              a(href="#")
+                | Housekeeping
+            li
+              a(href="#")
+                | Service
+            li
+              a(href="#")
+                | Facilities
+            li
+              a(href="#")
+                | Location
+            li
+              a(href="#")
+                | Quality 
+            li
+              a(href="#")
+                | Price               
+        li
+          a(href="#")
+            i.icon.icon-tint
+            span
+              | Action Points
+    
+    #content
+    
+    script(data-main="js/main", src="js/require.js")
+    
+
+
+
+
+
+
+
+
+
