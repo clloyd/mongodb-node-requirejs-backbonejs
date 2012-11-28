@@ -1,0 +1,1 @@
+define(["jquery","underscore","backbone","views_dir/index/index","views_dir/departments/index"],function(e,t,n,r,i){var s=n.Router.extend({routes:{departments:"departments","*actions":"defaultAction"},defaultAction:function(){new r},departments:function(){new i}}),o=function(){new s,n.history.start()};return{initialize:o}});

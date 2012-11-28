@@ -1,0 +1,1 @@
+define(["underscore","backbone","app_dir/models/department"],function(e,t,n){var r=t.Collection.extend({model:n,url:"/departments",comparator:function(e){var t=1e6;return t-e.get("complaints")}});return r});
