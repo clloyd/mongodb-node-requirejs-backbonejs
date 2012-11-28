@@ -15,6 +15,10 @@ define([
   var ActionPointsView = Backbone.View.extend({
   
     el: "#actionpoints",
+
+    events: {
+      'click' : 'loadPage'
+    },
   
     initialize: function() {
   
@@ -33,6 +37,11 @@ define([
       })  
   
     },
+
+    loadPage: function() {
+      Backbone.history.navigate("#/actionpoints", { trigger: true })
+    },
+
   
     render: function() {
       _.each(this.collection.where({unread: true}), function(value, index) {

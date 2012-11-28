@@ -18,7 +18,7 @@ define([
     el: "#complaints",
 
     events: {
-      'click .widget-title' : 'loadDepartments'
+      'click' : 'loadPage'
     },
   
     initialize: function() {
@@ -39,7 +39,7 @@ define([
       })
     },
 
-    loadDepartments: function() {
+    loadPage: function() {
       Backbone.history.navigate("#/departments", { trigger: true })
     },
   
