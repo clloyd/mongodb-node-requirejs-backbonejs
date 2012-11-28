@@ -2,9 +2,9 @@ define([
   'underscore',
   'backbone'
 ], function(_, Backbone){
-  var DepertmentModel = Backbone.Model.extend({
-
+  var DepartmentModel = Backbone.Model.extend({
+    idAttribute: "_id"
   });
   // Return the model for the module
-  return DepertmentModel;
+  return DepartmentModel;
 });

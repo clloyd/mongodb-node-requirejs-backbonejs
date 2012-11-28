@@ -9,7 +9,10 @@
     "express": "3.0.0rc5",
     "jade": "*",
     "less-middleware": "*",
-    "requirejs": "*"
+    "requirejs": "*",
+    "colors": "*",
+    "mongoose": "*",
+    "underscore": "*"
   },
   "engines": {
     "node": "0.8.x",

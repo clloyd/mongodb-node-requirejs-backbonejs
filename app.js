@@ -5,10 +5,15 @@
 
 var express = require('express')
   , index = require('./routes/index')
+  , departments = require('./routes/departments')
   , http = require('http')
   , path = require('path')
   , requirejs = require('requirejs')
-  , fs = require('fs');
+  , colors = require('colors')
+  , mongoose = require('mongoose')
+  , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/DiveCP';
+  , db = mongoose.createConnection(mongoUri);
+
 
 var app = express();
 
@@ -26,13 +31,12 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
   app.use(require('less-middleware')({ src: __dirname + '/public', debug: true, force: true, once: false}));
-
-  // Use development version of static files 
+  console.log("Detected running in development mode, skipping assets pre-compile".yellow)
   app.use(express.static(__dirname + '/public'));
 });
 
 app.configure('production', function(){
-  app.use(require('less-middleware')({ src: __dirname + '/public'}));
+  app.use(require('less-middleware')({ src: __dirname + '/public', compress: true, once: true}));
 
   requirejs.optimize({
     appDir: "public/",
@@ -75,12 +79,34 @@ app.configure('production', function(){
   app.use(express.static(__dirname + '/public_build'));
 });
 
+//Store my models in an object
+Models = {}
+Schemas = {}
 
-//Set up the config passed to the optimizer
+//Set up database
 
-app.get('/', index.index);
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  //Set Up Schemas
+  Schemas.department = new mongoose.Schema({
+    name: String,
+    numberofcomplaints: String
+  })
 
+  Models.departments = db.model('Departments', Schemas.department)
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+  console.log("Database connection successful and setup".green)
+  //Start server only after database setup
+  http.createServer(app).listen(app.get('port'), function(){
+    console.log(("Express server listening on port " + app.get('port')).green);
+  });
 });
+
+
+//Route index
+app.get('/', index.index);
+//Route Depar
+app.get('/departments', departments.index)
+app.get('/departments/:name', departments.show)
+
+
