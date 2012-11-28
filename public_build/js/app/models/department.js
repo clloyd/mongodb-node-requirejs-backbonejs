@@ -1,1 +1,0 @@
-define(["underscore","backbone"],function(e,t){var n=t.Model.extend({idAttribute:"_id"});return n});

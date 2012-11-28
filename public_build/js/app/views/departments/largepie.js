@@ -1,1 +1,0 @@
-define(["jquery","underscore","backbone","jade!views_dir/departments/templates/largepie"],function(e,t,n,r){var i=n.View.extend({initialize:function(){var e=r;this.$el.html(e),this.render()},render:function(){e("#largepie").html(this.el)}});return i});

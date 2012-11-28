@@ -1,1 +1,0 @@
-define(["jquery","underscore","backbone","libs/bootstrap","libs/unicorn","app_dir/router"],function(e,t,n,r,i,s){var o=function(){s.initialize()};return{initialize:o}});
