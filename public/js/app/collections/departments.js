@@ -8,8 +8,7 @@ define([
     model: DepartmentModel,
     url: '/departments',
     comparator: function(department) {
-      var negativecomplaints = 1000000
-      return (negativecomplaints - department.get('complaints'))
+      return (0 - department.get('complaints'))
     }
   });
   // You don't usually return a collection instantiated

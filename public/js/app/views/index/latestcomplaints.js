@@ -7,6 +7,8 @@ define([
   'jade!views_dir/index/templates/latestcomplaints',
   'jade!views_dir/index/templates/latestcomplaint-row'
 
+
+
 ], function($, _, Backbone, WidgetTemplate,LatestComplaintsTemplate, LatestComplaintsRowTemplate){
   var LatestComplaintsView = Backbone.View.extend({
   

@@ -4,6 +4,8 @@ define([
   'backbone',
   'jade!views_dir/index/templates/index',
   //'text!templates/project/list.html'
+
+  
   //Other Views
   'views_dir/index/complaints',
   'views_dir/index/actionpoints',
@@ -13,6 +15,8 @@ define([
 
 ], function($, _, Backbone, IndexTemplate, ComplaintsView, ActionPointsView, LeagueTableView, LatestComplaintsView){
   var IndexView = Backbone.View.extend({
+
+    el: '#content',
 
     initialize: function() {
       var html = IndexTemplate({title: "Dashboard"})
@@ -31,7 +35,6 @@ define([
     },
   
     render: function() {
-      $('#content').html(this.el)
 
       //Make Dashboard Tab Active
       $('li#dashboardmenu').addClass('active')

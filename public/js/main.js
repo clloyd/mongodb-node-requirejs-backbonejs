@@ -4,13 +4,13 @@ require.config({
     underscore: 'libs/underscore',
     backbone: 'libs/backbone',
     jade: 'libs/jade',
-    unicorn: 'libs/unicorn',
     bootstrap: 'libs/bootstrap',
     app_dir: 'app',
     views_dir: 'app/views'
   },
 
   shim: {
+    //Add a shim to get a non-AMD script to work
     underscore: {
       exports: '_'
     },
@@ -18,10 +18,16 @@ require.config({
       deps: ["underscore", "jquery"],
       exports: "Backbone"
     },
-
-    bootstrap: ["jquery"],
-
-    unicorn: ["jquery", "bootstrap"],
+    bootstrap: {
+      deps: ["jquery"],
+      exports: "Bootstrap"
+    },
+    'libs/unicorn': {
+      deps: ["jquery", "bootstrap"],
+      exports: "Unicorn"
+    },
+    'libs/jquery.flot.pie': ["jquery", "libs/excanvas", "libs/jquery.flot", "libs/jquery.flot.resize"],
+    'libs/jquery.flot.resize': ["jquery", "libs/excanvas", "libs/jquery.flot"],
   }
 });
 

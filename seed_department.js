@@ -1,7 +1,8 @@
 var mongoose = require('mongoose')
   , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/DiveCP'
   , db = mongoose.createConnection(mongoUri)
-  , _ = require('underscore');
+  , _ = require('underscore')
+  , colors = require('colors');
 
 Models = {}
 Schemas = {}

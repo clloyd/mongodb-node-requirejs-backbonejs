@@ -2,7 +2,7 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'libs/bootstrap',
+  'bootstrap',
   'libs/unicorn',
   'app_dir/router', // Request router.js
 ], function($, _, Backbone, Bootstrap, Unicorn, Router){

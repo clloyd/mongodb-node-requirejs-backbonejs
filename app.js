@@ -6,6 +6,7 @@
 var express = require('express')
   , index = require('./routes/index')
   , departments = require('./routes/departments')
+  , actionpoints = require('./routes/actionpoints')
   , http = require('http')
   , path = require('path')
   , requirejs = require('requirejs')
@@ -49,28 +50,40 @@ app.configure('production', function(){
       }
     ],
 
+    pragmasOnSave: {
+      excludeJade: true
+    },
+
     paths: {
       jquery: 'libs/jquery',
       underscore: 'libs/underscore',
       backbone: 'libs/backbone',
       jade: 'libs/jade',
+      bootstrap: 'libs/bootstrap',
       app_dir: 'app',
       views_dir: 'app/views'
-    }, 
-
-    pragmasOnSave: {
-      excludeJade: true
     },
-
+    
     shim: {
+      //Add a shim to get a non-AMD script to work
       underscore: {
         exports: '_'
       },
       backbone: {
         deps: ["underscore", "jquery"],
         exports: "Backbone"
-      }
-    } 
+      },
+      bootstrap: {
+        deps: ["jquery"],
+        exports: "Bootstrap"
+      },
+      'libs/unicorn': {
+        deps: ["jquery", "bootstrap"],
+        exports: "Unicorn"
+      },
+      'libs/jquery.flot.pie': ["jquery", "libs/excanvas", "libs/jquery.flot", "libs/jquery.flot.resize"],
+      'libs/jquery.flot.resize': ["jquery", "libs/excanvas", "libs/jquery.flot"],
+    }
   }, function() {
     console.log('Successfully optimized javascript');
   });
@@ -88,12 +101,17 @@ Schemas = {}
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
   //Set Up Schemas
-  Schemas.department = new mongoose.Schema({
+  //DEPARTMENTS
+  var departmentSchema = new mongoose.Schema({
     name: String,
     numberofcomplaints: String
   })
-
-  Models.departments = db.model('Departments', Schemas.department)
+  Models.departments = db.model('Departments', departmentSchema)
+  //ACTIONPOINTS
+  var actionpointSchema = new mongoose.Schema({
+    text: String,
+  })
+  Models.actionpoints = db.model('Action Points', actionpointSchema)
 
   console.log("Database connection successful and setup".green)
   //Start server only after database setup
@@ -108,5 +126,7 @@ app.get('/', index.index);
 //Route Depar
 app.get('/departments', departments.index)
 app.get('/departments/:name', departments.show)
+
+app.get('/actionpoints', actionpoints.index)
 
 
