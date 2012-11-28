@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
-  , db = mongoose.createConnection('localhost', 'DiveCP')
+  , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/DiveCP'
+  , db = mongoose.createConnection(mongoUri)
   , _ = require('underscore');
 
 Models = {}
