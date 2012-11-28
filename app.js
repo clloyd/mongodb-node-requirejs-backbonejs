@@ -11,7 +11,7 @@ var express = require('express')
   , requirejs = require('requirejs')
   , colors = require('colors')
   , mongoose = require('mongoose')
-  , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/DiveCP';
+  , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/DiveCP'
   , db = mongoose.createConnection(mongoUri);
 
 
