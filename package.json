@@ -13,7 +13,9 @@
     "colors": "*",
     "mongoose": "*",
     "underscore": "*",
-    "lorem-ipsum": "*"
+    "lorem-ipsum": "*",
+    "moment": "*",
+    "commander": "*"
   },
   "engines": {
     "node": "0.8.x",

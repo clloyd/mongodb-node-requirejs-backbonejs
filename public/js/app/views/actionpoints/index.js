@@ -35,6 +35,7 @@ define([
     },
   
     render: function() {
+
       $('#content').html(this.el)
 
       //Make Tab Active

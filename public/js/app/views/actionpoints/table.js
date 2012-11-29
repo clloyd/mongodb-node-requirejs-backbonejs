@@ -25,7 +25,7 @@ define([
   
     render: function() {
       _.each(this.options.models, function(actionpoint) {
-        this.$('tbody').append(TableRowTemplate(actionpoint.attributes))
+        this.$('tbody').append(TableRowTemplate({text: actionpoint.get('text'), icon: 'alert'}))
       })
     }
   });

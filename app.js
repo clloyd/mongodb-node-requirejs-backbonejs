@@ -4,17 +4,21 @@
  */
 
 var express = require('express')
-  , index = require('./routes/index')
-  , departments = require('./routes/departments')
-  , actionpoints = require('./routes/actionpoints')
   , http = require('http')
   , path = require('path')
   , requirejs = require('requirejs')
   , colors = require('colors')
   , mongoose = require('mongoose')
   , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/DiveCP'
-  , db = mongoose.createConnection(mongoUri);
+  , db = mongoose.createConnection(mongoUri)
+  , schemas = require('./db/schemas');
 
+//routes
+var index = require('./routes/index')
+  , departments = require('./routes/departments')
+  , actionpoints = require('./routes/actionpoints')
+  , latestreviews = require('./routes/latestreviews')
+  , leaguetable = require('./routes/leaguetable')
 
 var app = express();
 
@@ -94,30 +98,18 @@ app.configure('production', function(){
 
 //Store my models in an object
 Models = {}
-Schemas = {}
 
 //Set up database
 
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  //Set Up Schemas
-  //DEPARTMENTS
-  var departmentSchema = new mongoose.Schema({
-    name: String,
-    numberofcomplaints: String
+db.once('open', function () {
+  schemas.establish(db, function() {
+    console.log("Database connection successful and setup".green)
+    //Start server only after database setup
+    http.createServer(app).listen(app.get('port'), function(){
+      console.log(("Express server listening on port " + app.get('port')).green);
+    });  
   })
-  Models.departments = db.model('Departments', departmentSchema)
-  //ACTIONPOINTS
-  var actionpointSchema = new mongoose.Schema({
-    text: String,
-  })
-  Models.actionpoints = db.model('Action Points', actionpointSchema)
-
-  console.log("Database connection successful and setup".green)
-  //Start server only after database setup
-  http.createServer(app).listen(app.get('port'), function(){
-    console.log(("Express server listening on port " + app.get('port')).green);
-  });
 });
 
 
@@ -125,8 +117,8 @@ db.once('open', function callback () {
 app.get('/', index.index);
 //Route Depar
 app.get('/departments', departments.index)
-app.get('/departments/:name', departments.show)
-
 app.get('/actionpoints', actionpoints.index)
+app.get('/leaguetable', leaguetable.index)
+app.get('/latestreviews', latestreviews.index)
 
 

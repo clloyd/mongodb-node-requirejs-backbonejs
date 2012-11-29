@@ -3,13 +3,17 @@ define([
   'underscore',
   'backbone',
 
+  //collections
+  'app_dir/collections/latestreviews',
+
+  //Templates
   'jade!views_dir/index/templates/widget',
   'jade!views_dir/index/templates/latestcomplaints',
   'jade!views_dir/index/templates/latestcomplaint-row'
 
 
 
-], function($, _, Backbone, WidgetTemplate,LatestComplaintsTemplate, LatestComplaintsRowTemplate){
+], function($, _, Backbone, LatestReviewsCollection, WidgetTemplate, LatestComplaintsTemplate, LatestComplaintsRowTemplate){
   var LatestComplaintsView = Backbone.View.extend({
   
     el: "#latestcomplaints",
@@ -21,19 +25,22 @@ define([
       this.$el.html(widgethtml)
   
       this.$('.widget-content').html(LatestComplaintsTemplate())
-  
-      this.renderdata()
+
+      this.collection = new LatestReviewsCollection();
+
+      var context = this
+      this.collection.fetch().success(function(collection) {
+        context.render({collection: collection})
+      })
     },
   
-    renderdata: function() {
-      var tempdata = [
-        {img_url: "http://placehold.it/100x100", user: "Ted (Bournemouth, UK)", review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae enim elit. Vestibulum justo ipsum, sagittis vitae faucibus et, interdum et massa. Mauris vitae magna mauris..."}
-      ]
-  
-      _.each(tempdata, function(value, index) {
-        var html = LatestComplaintsRowTemplate(value)
+    render: function() {
+
+      console.log(this)
+      _.each(this.collection.where({unread: true}), function(value, index) {
+        var html = LatestComplaintsRowTemplate(value.attributes)
         this.$('ul').append(html)
-      }, this)
+      }, this)  
     }
   })
   // Our module now returns our view
