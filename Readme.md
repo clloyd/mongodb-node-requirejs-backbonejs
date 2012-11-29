@@ -34,17 +34,33 @@ Get started
 -----------
 
 Clone repo and run
+    
     npm install
 
 requires mongo db to be running locally.
 
 Alternativly, deploy to heroku with a mongo Lab starter addon 
+    
     heroku addons:add mongolab:starter
 
 Ensure you set the enviroment to production with
+    
     heroku config:add NODE_ENV=production
 
 Will give you speedy assets :)
+
+Seed Data
+---------
+
+What's an app without data? to seed data:
+
+    node seed.js -s
+
+If you need to delete all data from database:
+
+    node seed.js -c
+    
+
 
 
 
