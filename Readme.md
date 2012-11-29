@@ -30,10 +30,21 @@ Each menu tab has it's own Main view (index.js) and then each "widget" is a subv
 The UI is bootstrap based, pulling fonts from google web fonts.
 
 
-Get started
------------
+Get started (Local)
+-------------------
 
-Clone repo and run
+You'll need node, npm and a locally running mongodb instance.
+
+Clone repo and run inside root
+
+    npm install
+
+Then to start the node server
+
+    node app.js
+
+
+You'll have a locally running copy, if you want to run on heroku, push to heroku as normal but you'll need a MongoDB provider, the system automatically checks for mongolab, so you can add that for free with
 
     heroku addons:add mongolab:starter
 
@@ -50,7 +61,7 @@ What's an app without data? to seed data:
 
     node seed.js -s
 
-If you need to delete all data from database:
+If you need to remove all data from database created by this app run:
 
     node seed.js -c
     
