@@ -34,13 +34,21 @@ Get started
 -----------
 
 Clone repo and run
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> bdcd9c92be6f37561842a1cadadb34a3a6379067
     npm install
 
 requires mongo db to be running locally.
 
 Alternativly, deploy to heroku with a mongo Lab starter addon 
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> bdcd9c92be6f37561842a1cadadb34a3a6379067
     heroku addons:add mongolab:starter
 
 Ensure you set the enviroment to production with
