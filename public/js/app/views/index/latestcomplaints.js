@@ -35,12 +35,10 @@ define([
     },
   
     render: function() {
-
-      console.log(this)
-      _.each(this.collection.where({unread: true}), function(value, index) {
-        var html = LatestComplaintsRowTemplate(value.attributes)
+      for (var i = 0; i <= 1; i++) {
+        var html = LatestComplaintsRowTemplate(this.collection.models[i].attributes)
         this.$('ul').append(html)
-      }, this)  
+      };
     }
   })
   // Our module now returns our view

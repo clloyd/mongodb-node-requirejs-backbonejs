@@ -1,8 +1,17 @@
 li.reviewitem
   .row-fluid
-    img(src=img_url)
+    img(src=image)
     .review  
       .user
-        = user
+        = user_name
+        | (
+        if city
+          = city
+          | , 
+        = country
+        | )
+
       .reviewtext
-        = review
+        = review.substring(0,200)+"..."
+      .date
+        = new Date(date).toDateString()

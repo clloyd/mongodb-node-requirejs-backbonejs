@@ -76,7 +76,7 @@ function seedlatestreviews() {
       user_name: first_name[Math.floor(Math.random()*(first_name.length - 1))] +" "+ last_name[Math.floor(Math.random()*(last_name.length - 1))] ,
       city: locations[Math.floor(Math.random()*(locations.length - 1))],
       country: countries[Math.floor(Math.random()*(countries.length - 1))],
-      image: 'http://lorempixel.com/100/100/'
+      image: 'http://placekitten.com/100/100'
     })
 
     latestreview.save(function (err, review) {
@@ -125,9 +125,6 @@ function seedleaguetable() {
     });
   })
 }
-
-
-
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
