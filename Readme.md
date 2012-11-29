@@ -64,6 +64,11 @@ What's an app without data? to seed data:
 If you need to remove all data from database created by this app run:
 
     node seed.js -c
+
+You can run equivalent commands on heroku with
+
+    heroku run 'node seed.js -c'
+    heroku run 'node seed.js -s'
     
 
 
