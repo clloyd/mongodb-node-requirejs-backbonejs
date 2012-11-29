@@ -1,20 +1,12 @@
-if active
-  tr.leaguerow.active
-    td 
-      i.ss-icon(class=color)
+tr.leaguerow
+  td
+    = position
+    .label(class=label)
+      i.ss-icon
         = icon
-      = position
-    td 
-      = name
-    td 
-      = score
-else
-  tr.leaguerow
-    td 
-      i.ss-icon(class=color)
-        = icon
-      = position
-    td 
-      = name
-    td 
-      = score
+      = change
+    
+  td 
+    = name
+  td 
+    = score

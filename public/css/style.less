@@ -1,3 +1,9 @@
+
+@red: rgb(201,44,44);
+@green: rgb(58,173,67);
+
+
+
 body {
   font-family: 'Open Sans', Helvetica, Sans-Serif;
 }
@@ -61,28 +67,39 @@ ul.unstyledul {
 
 
 #leaguetable {
+  .widget-content {
+    height: 300px;
+    overflow-y: scroll;
+  }
+
   .leaguerow { 
     i {
-      width: 17px;
-      font-size: 14px;
       position: relative;
       top: 1px;
-      padding-left: 5px;
-      padding-right: 10px;
+      padding-right: 5px;
       text-align: center;
-      color: rgb(143,143,143);
+      color:white;
     }
-  
-    i.good {
-      color: green;
+
+    .label {
+      float: right;
+      padding: 5px;
     }
-    i.bad {
-      color: red;
+
+    .label-good {
+      background-color: @green;
     }
-  } 
-  
-  .leaguerow.active {
+    .label-bad {
+      background-color: @red;
+    } 
+    .label-none{
+      display: none;
+    }
+  }
+
+  .active {
     background-color: #F5F5F5;
+    font-weight: 700;
   } 
 }
 
@@ -91,6 +108,21 @@ ul.unstyledul {
     img {
       float:left;
       padding-right: 15px;
+    }
+    .date {
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .user {
+      display: inline;
+      font-size: 15px;
+      font-weight: 600;
+
+    }
+    .location {
+      display: inline;
+      font-style: italic;
+
     }
   }
 }

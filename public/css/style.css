@@ -42,28 +42,50 @@ ul.unstyledul {
   color: red;
   margin: 1px 5px 0;
 }
+#leaguetable .widget-content {
+  height: 300px;
+  overflow-y: scroll;
+}
 #leaguetable .leaguerow i {
-  width: 17px;
-  font-size: 14px;
   position: relative;
   top: 1px;
-  padding-left: 5px;
-  padding-right: 10px;
+  padding-right: 5px;
   text-align: center;
-  color: #8f8f8f;
+  color: white;
 }
-#leaguetable .leaguerow i.good {
-  color: green;
+#leaguetable .leaguerow .label {
+  float: right;
+  padding: 5px;
 }
-#leaguetable .leaguerow i.bad {
-  color: red;
+#leaguetable .leaguerow .label-good {
+  background-color: #3aad43;
 }
-#leaguetable .leaguerow.active {
+#leaguetable .leaguerow .label-bad {
+  background-color: #c92c2c;
+}
+#leaguetable .leaguerow .label-none {
+  display: none;
+}
+#leaguetable .active {
   background-color: #F5F5F5;
+  font-weight: 700;
 }
 #latestcomplaints .reviewitem img {
   float: left;
   padding-right: 15px;
+}
+#latestcomplaints .reviewitem .date {
+  font-weight: bold;
+  font-size: 12px;
+}
+#latestcomplaints .reviewitem .user {
+  display: inline;
+  font-size: 15px;
+  font-weight: 600;
+}
+#latestcomplaints .reviewitem .location {
+  display: inline;
+  font-style: italic;
 }
 #sidebar ul li {
   -webkit-transition: all 0.2s ease-in;

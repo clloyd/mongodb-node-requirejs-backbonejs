@@ -3,11 +3,13 @@ define([
   'underscore',
   'backbone',
 
+  'app_dir/collections/leaguetable',
+
   'jade!views_dir/index/templates/widget',
   'jade!views_dir/index/templates/leaguetable',
   'jade!views_dir/index/templates/leaguetable-row'
 
-], function($, _, Backbone, WidgetTemplate, LeagueTableTemplate, LeagueTableRowTemplate){
+], function($, _, Backbone, LeagueTableCollection, WidgetTemplate, LeagueTableTemplate, LeagueTableRowTemplate){
   var LeagueTableView = Backbone.View.extend({
   
     el: "#leaguetable",
@@ -21,24 +23,41 @@ define([
       this.$('.widget-content').addClass('nopadding')
       this.$('.widget-content').html(LeagueTableTemplate()) 
   
-      this.renderdata()  
+      this.collection = new LeagueTableCollection();
+
+      var context = this
+      this.collection.fetch().success(function(collection) {
+        context.render()
+      })  
   
     },
   
-    renderdata: function() {
-      var tempdata = [
-        {name: "The Grand Hotel", color: "good", icon: "ascend", position: 14, score:348, active: false},
-        {name: "Our Hotel", color: "neutral", icon: "minus", position: 15, score:331, active: true},
-        {name: "Relaxation Hotel", color: "neutral", icon: "minus", position: 16, score:320, active: false},
-        {name: "St James Hotel", color: "good", icon: "ascend", position: 17, score:308, active: false},
-        {name: "Value Hotel", color: "bad", icon: "descend", position: 18, score:291, active: false},
-        {name: "Finest Hotel", color: "bad", icon: "descend", position: 19, score:270, active: false}
-      ]
-  
-      _.each(tempdata, function(value, index) {
-        var html = LeagueTableRowTemplate(value)
+    render: function() {
+      
+      _.each(this.collection.models, function(position, index) {
+        var row = position.attributes
+
+        if (row.change < 0) { 
+          row.label = "label-bad"
+          row.icon = "down"
+        } else if (row.change > 0) {
+          row.label = "label-good"
+          row.icon = "up"
+        } else {
+          row.label = "label-none"
+          row.icon = "minus"
+        } 
+
+        var html = LeagueTableRowTemplate(row)
         this.$('tbody').append(html)
       }, this)
+
+      //Color our Hotel
+      $(this.$('.widget-content tr')[13]).addClass('active')
+
+      //Scroll the list to the correct position
+      var trposition = $(this.$('.widget-content tr')[13]).position().top
+      this.$('.widget-content').scrollTop(trposition-150)
       
     }
   })

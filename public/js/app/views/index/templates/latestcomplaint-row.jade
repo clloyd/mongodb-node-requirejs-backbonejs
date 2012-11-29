@@ -3,8 +3,9 @@ li.reviewitem
     img(src=image)
     .review  
       .user
-        = user_name
-        | (
+        = user_name 
+       .location
+        |  (
         if city
           = city
           | , 
