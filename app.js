@@ -119,6 +119,7 @@ app.get('/', index.index);
 app.get('/departments', departments.index)
 app.get('/actionpoints', actionpoints.index)
 app.get('/leaguetable', leaguetable.index)
+app.get('/leaguetable/trend', leaguetable.trend)
 app.get('/latestreviews', latestreviews.index)
 
 

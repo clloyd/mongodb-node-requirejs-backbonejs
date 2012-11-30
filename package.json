@@ -15,7 +15,8 @@
     "underscore": "*",
     "lorem-ipsum": "*",
     "moment": "*",
-    "commander": "*"
+    "commander": "*",
+    "async": "*"
   },
   "engines": {
     "node": "0.8.x",

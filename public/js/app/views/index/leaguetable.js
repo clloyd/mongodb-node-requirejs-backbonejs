@@ -13,6 +13,10 @@ define([
   var LeagueTableView = Backbone.View.extend({
   
     el: "#leaguetable",
+
+    events: {
+      'click' : 'loadPage'
+    },
   
     initialize: function() {
   
@@ -20,7 +24,7 @@ define([
       var widgethtml = WidgetTemplate({title: "League Table", icon: "list", label: false})
       this.$el.html(widgethtml)
   
-      this.$('.widget-content').addClass('nopadding')
+      this.$('.widget-content').addClass('nopadding limitheight')
       this.$('.widget-content').html(LeagueTableTemplate()) 
   
       this.collection = new LeagueTableCollection();
@@ -58,7 +62,10 @@ define([
       //Scroll the list to the correct position
       var trposition = $(this.$('.widget-content tr')[13]).position().top
       this.$('.widget-content').scrollTop(trposition-150)
-      
+    }, 
+
+    loadPage: function() {
+      Backbone.history.navigate("#/leaguetable", { trigger: true })
     }
   })
   // Our module now returns our view
