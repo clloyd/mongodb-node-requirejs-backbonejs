@@ -1,3 +1,7 @@
+html,
+html a {
+  -webkit-font-smoothing: antialiased !important;
+}
 body {
   font-family: 'Open Sans', Helvetica, Sans-Serif;
 }
@@ -44,6 +48,14 @@ th.maincolumn {
   top: 1px;
   color: red;
   margin: 1px 5px 0;
+}
+#actionpoints td.change {
+  color: #c92c2c;
+}
+#actionpoints td.change i {
+  padding-right: 5px;
+  position: relative;
+  top: 1px;
 }
 #leaguetable .limitheight {
   height: 300px;

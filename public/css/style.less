@@ -3,6 +3,9 @@
 @green: rgb(58,173,67);
 
 
+html, html a {
+    -webkit-font-smoothing: antialiased !important;
+}
 
 body {
   font-family: 'Open Sans', Helvetica, Sans-Serif;
@@ -66,7 +69,17 @@ th.maincolumn {
       color: red;
       margin: 1px 5px 0;
     }
-  } 
+  }
+
+  td.change {
+    color: @red;
+
+    i {
+      padding-right: 5px;
+      position: relative;
+      top: 1px;
+    }
+  }
 }
 
 

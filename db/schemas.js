@@ -10,6 +10,8 @@ exports.establish = function(db, callback){
   //ACTIONPOINTS
   var actionpointSchema = new mongoose.Schema({
     text: String,
+    direction: String,
+    amount: Number,
     unread: Boolean
   })
   Models.actionpoints = db.model('Action Points', actionpointSchema)

@@ -1,9 +1,13 @@
-tr.leaguerow
-  td 
-    i.ss-icon
-      = icon
+tr
+  td.change
+    if (direction == "up")
+      i.ss-icon
+        | ascend
+    else if (direction == "down")
+      i.ss-icon
+        | descend
+    =  amount
+    | %
   td 
     = text
   td 
-    .btn
-      | Mark As Completed

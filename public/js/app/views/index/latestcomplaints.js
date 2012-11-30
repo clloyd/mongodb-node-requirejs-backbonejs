@@ -17,6 +17,10 @@ define([
   var LatestComplaintsView = Backbone.View.extend({
   
     el: "#latestcomplaints",
+
+    events: {
+      'click' : 'loadPage'
+    },
   
     initialize: function() {
   
@@ -39,6 +43,10 @@ define([
         var html = LatestComplaintsRowTemplate(this.collection.models[i].attributes)
         this.$('ul').append(html)
       };
+    },
+
+    loadPage: function() {
+      Backbone.history.navigate("#/latestreviews", { trigger: true })
     }
   })
   // Our module now returns our view

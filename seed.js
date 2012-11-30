@@ -7,6 +7,7 @@ var mongoose = require('mongoose')
   , lipsum = require('lorem-ipsum')
   , moment = require('moment')
   , commander = require('commander');
+
 Models = {}
 
 //Seed Functions
@@ -26,13 +27,13 @@ function cleardb() {
 function seedactionpoints() {
   //Seed Action Points
   var messages = [
-    { text: "Increase in Complaints regarding Swimming Pool", unread: true},
-    { text: "Increase in Complaints regarding Check In", unread: true},
-    { text: "Increase in Complaints regarding Room Cleanliness", unread: true},
-    { text: "Decrease in Satisfaction from UK Visitors", unread: true},
-    { text: "Increase in Complaints regarding Swimming Pool", unread: false},
-    { text: "Increase in Complaints regarding Noise Levels", unread: false},
-    { text: "Increase in Complaints regarding Staff", unread: false}
+    {amount: 20, direction: "up", text: "Increase in Complaints regarding Swimming Pool", unread: true},
+    {amount: 17, direction: "up",  text: "Increase in Complaints regarding Check In", unread: true},
+    {amount: 15, direction: "up",  text: "Increase in Complaints regarding Room Cleanliness", unread: true},
+    {amount: 10, direction: "down",  text: "Decrease in Satisfaction from UK Visitors", unread: true},
+    {amount: 16, direction: "up",  text: "Increase in Complaints regarding Swimming Pool", unread: false},
+    {amount: 9, direction: "up",  text: "Increase in Complaints regarding Noise Levels", unread: false},
+    {amount: 5, direction: "up",  text: "Increase in Complaints regarding Staff", unread: false}
   ]
   _.each(messages, function(actionpoint){
     var actionpoint = new Models.actionpoints(actionpoint);
@@ -129,7 +130,9 @@ function seedleaguetable() {
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   schemas.establish(db, function() {
-    console.log("Database connection successful and setup".green)    
+    console.log("Database connection successful and setup".green)
+    commander.version('0.1').option('-c, --clean', "Clean All Model Contents").option('-s, --seed', "Seed Model Contents").parse(process.argv)    
+    
     if(commander.clean) {
       cleardb()
     } else if (commander.seed) {

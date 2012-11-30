@@ -29,10 +29,10 @@ define([
 
         if (row.change < 0) { 
           row.label = "label-bad"
-          row.icon = "down"
+          row.icon = "descend"
         } else if (row.change > 0) {
           row.label = "label-good"
-          row.icon = "up"
+          row.icon = "ascend"
         } else {
           row.label = "label-none"
           row.icon = "minus"
