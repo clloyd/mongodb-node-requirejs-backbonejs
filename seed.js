@@ -129,10 +129,7 @@ function seedleaguetable() {
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   schemas.establish(db, function() {
-    console.log("Database connection successful and setup".green)
-
-    commander.version('0.1').option('-c, --clean', "Clean All Model Contents").option('-s, --seed', "Seed Model Contents").parse(process.argv)
-    
+    console.log("Database connection successful and setup".green)    
     if(commander.clean) {
       cleardb()
     } else if (commander.seed) {
