@@ -1,0 +1,16 @@
+tr.reviewitem
+  td
+    img(src=image)
+  td
+    = user_name 
+    .location
+      |  (
+      if city
+        = city
+        | , 
+      = country
+      | )
+  td.reviewtext
+    = review.substring(0,200)+"..."
+  td.date
+    = new Date(date).toDateString()
