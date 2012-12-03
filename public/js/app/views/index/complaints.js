@@ -57,7 +57,7 @@ define([
           , value = department.get('complaints') + "/" + total
 
         //Determine color
-        if (percent >= 30) {color = "red"} else if (percent >= 25) {color = "yellow"} else {color = "green"}
+        if (percent >= 30) {color = "rgb(201,44,44)"} else if (percent >= 25) {color = "yellow"} else {color = "rgb(58,173,67)"}
         
         var html = ComplaintPieTemplate({color: color, name: department.get('name'), value: value})
         this.$('ul').append(html)

@@ -28,6 +28,14 @@ th.maincolumn {
 .widget-title:hover {
   cursor: pointer;
 }
+#summary .stat-boxes {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+#summary .stat-boxes .left {
+  padding: 10px 14px 11px 4px;
+}
 #complaints .piewrapper {
   text-align: center;
 }
@@ -49,7 +57,7 @@ th.maincolumn {
   font-size: 14px;
   position: relative;
   top: 1px;
-  color: red;
+  color: #c92c2c;
   margin: 1px 5px 0;
 }
 #actionpoints td.change {
