@@ -1,13 +1,19 @@
-tr
-  td.change
+td.change
+
+  .label.label-bad
+    = amount
+    | %
     if (direction == "up")
       i.ss-icon
         | ascend
     else if (direction == "down")
       i.ss-icon
         | descend
-    =  amount
-    | %
-  td 
-    = text
-  td 
+td 
+  = text
+  if (unread == true)
+    .btn#changeread
+      | Mark as read
+  else if (unread == false)
+    .btn#changeread
+      | Mark as unread

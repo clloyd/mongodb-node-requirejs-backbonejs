@@ -9,6 +9,13 @@
     i.ss-icon
       | check
     | Action Points
-.container-fluid
+.container-fluid#actionpoints
+  .alert
+    button.close(type="button", data-dismiss="alert") ×
+    strong
+      | Warning!
+    |  Data changes not saved to server (refresh to reset).
   .row-fluid
-    .span12.center#actionpoints
+    .span12.center#unreadactionpoints   
+  .row-fluid
+    .span12.center#readactionpoints

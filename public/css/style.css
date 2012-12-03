@@ -12,6 +12,9 @@ ul.unstyledul {
 th.maincolumn {
   width: 70%;
 }
+.alert {
+  margin-top: 10px;
+}
 #header h1 a {
   color: white;
   font-family: 'Trocchi', Sans-Serif;
@@ -53,9 +56,18 @@ th.maincolumn {
   color: #c92c2c;
 }
 #actionpoints td.change i {
-  padding-right: 5px;
+  padding-left: 5px;
   position: relative;
   top: 1px;
+}
+#actionpoints .label {
+  padding: 5px;
+}
+#actionpoints .label-bad {
+  background-color: #c92c2c;
+}
+#actionpoints .btn {
+  float: right;
 }
 #leaguetable .limitheight {
   height: 300px;
