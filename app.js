@@ -58,11 +58,14 @@ app.configure('production', function(){
       excludeJade: true
     },
 
+    waitSeconds : 15,
+
     paths: {
       jquery: 'libs/jquery',
       underscore: 'libs/underscore',
       backbone: 'libs/backbone',
       jade: 'libs/jade',
+      async: 'libs/async',
       bootstrap: 'libs/bootstrap',
       app_dir: 'app',
       views_dir: 'app/views'

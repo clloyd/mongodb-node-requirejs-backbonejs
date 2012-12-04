@@ -39,6 +39,8 @@ define([
         } 
 
         var html = TableRowTemplate(row)
+
+        $(this.$('.widget-content tr')[13]).addClass('active')
         this.$('tbody').append(html)
       })
     }

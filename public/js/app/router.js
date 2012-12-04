@@ -6,9 +6,10 @@ define([
   'views_dir/departments/index',
   'views_dir/actionpoints/index',
   'views_dir/leaguetable/index',
-  'views_dir/latestreviews/index'
+  'views_dir/latestreviews/index',
+  'views_dir/competition/index'  
 
-], function($, _, Backbone, IndexView, DepartmentsView, ActionPointsView, LeagueTableView, LatestReviewsView){
+], function($, _, Backbone, IndexView, DepartmentsView, ActionPointsView, LeagueTableView, LatestReviewsView, CompetitionView){
   
   var AppRouter = Backbone.Router.extend({
     routes: {
@@ -16,6 +17,7 @@ define([
       "actionpoints": "actionpoints",
       "leaguetable": "leaguetable",
       "latestreviews": "latestreviews",
+      "competition": "competition",
       //Default Route
       "*actions": "defaultAction"
     },
@@ -38,6 +40,10 @@ define([
 
     latestreviews: function() {
       new LatestReviewsView();
+    },
+
+    competition: function() {
+      new CompetitionView();
     }
     
   });

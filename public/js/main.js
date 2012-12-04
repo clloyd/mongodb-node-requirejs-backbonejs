@@ -4,10 +4,13 @@ require.config({
     underscore: 'libs/underscore',
     backbone: 'libs/backbone',
     jade: 'libs/jade',
+    async: 'libs/async',
     bootstrap: 'libs/bootstrap',
     app_dir: 'app',
     views_dir: 'app/views'
   },
+
+  waitSeconds : 15,
 
   shim: {
     //Add a shim to get a non-AMD script to work
