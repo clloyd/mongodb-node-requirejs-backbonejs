@@ -2,6 +2,14 @@ html,
 html a {
   -webkit-font-smoothing: antialiased !important;
 }
+#map_canvas label {
+  width: auto;
+  display: inline;
+}
+#map_canvas img {
+  max-width: none;
+  max-height: none;
+}
 body {
   font-family: 'Open Sans', Helvetica, Sans-Serif;
 }
@@ -124,4 +132,14 @@ th.maincolumn {
 }
 #sidebar ul li {
   -webkit-transition: all 0.2s ease-in;
+}
+#map_summary .bar {
+  background-color: #c92c2c;
+  height: 7px;
+  position: relative;
+  top: 8px;
+}
+#map_summary .table th,
+#map_summary .table td {
+  padding: 4px 10px;
 }

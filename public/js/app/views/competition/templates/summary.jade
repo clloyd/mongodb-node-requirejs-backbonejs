@@ -1,0 +1,10 @@
+table.table.table-bordered
+  tbody
+    each term in terms
+      tr
+        td(style="width: 50%")
+          = term.term
+        td(style="width: 50%")
+          - var percent = Math.floor((term.score / max_value) * 100)
+          .bar(style="width: " + percent + "%;")
+

@@ -19,6 +19,7 @@ var index = require('./routes/index')
   , actionpoints = require('./routes/actionpoints')
   , latestreviews = require('./routes/latestreviews')
   , leaguetable = require('./routes/leaguetable')
+  , competitors = require('./routes/competitors')
 
 var app = express();
 
@@ -124,5 +125,7 @@ app.get('/actionpoints', actionpoints.index)
 app.get('/leaguetable', leaguetable.index)
 app.get('/leaguetable/trend', leaguetable.trend)
 app.get('/latestreviews', latestreviews.index)
+app.get('/competitors', competitors.index)
+app.get('/competitors/:id', competitors.show)
 
 

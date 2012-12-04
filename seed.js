@@ -6,7 +6,8 @@ var mongoose = require('mongoose')
   , schemas = require('./db/schemas')
   , lipsum = require('lorem-ipsum')
   , moment = require('moment')
-  , commander = require('commander');
+  , commander = require('commander')
+  , mysql = require('mysql');
 
 Models = {}
 
@@ -127,6 +128,57 @@ function seedleaguetable() {
   })
 }
 
+function seedcompetitors() {
+  console.log("Called function")
+  //connect to RDS
+  var connection = mysql.createConnection({
+    host: 'bi-dive.c1nvzhfquwki.us-east-1.rds.amazonaws.com',
+    user: 'ro',
+    password: 'tk02kal',
+    database: 'dive1105b'
+  });
+
+  connection.connect(function(err) {
+    console.log("connected")
+    if (err) {
+      console.log(err)
+      process.exit()
+    }
+    connection.query('SELECT phs_master_id, name, latitude, longitude FROM dive_venue WHERE city = "Singapore";', function(err, rows){
+      _.each(rows, function(venue){
+        var competitor = new Models.competitors({name: venue.name, lat: venue.latitude, lon: venue.longitude, phs_master_id: venue.phs_master_id})
+        competitor.save(function(err, savedcompetitor){
+          if (err) {
+            console.log(("Error saving Competitor: " + err).red)
+          } else {
+            console.log("Saved Competitor: " + savedcompetitor.name)
+          }
+
+          //Got the venue... need the terms...
+          connection.query('SELECT term_txt, term_score FROM tds INNER JOIN terms ON tds.term_id = terms.term_id WHERE tds.venue_id = '+ savedcompetitor.phs_master_id+' ORDER BY term_score DESC LIMIT 18;', function(err, terms){
+            _.each(terms, function(termrow){
+              var term = {
+                term: termrow.term_txt,
+                score: termrow.term_score
+              }
+
+              Models.competitors.findByIdAndUpdate(savedcompetitor._id, {$push: {terms: term}}, function(err, savedterm){
+                if (err) {
+                  console.log(("Error saving Term: " + err).red)
+                } else {
+                  console.log("Saved Term: " + term.term)
+                }
+              })
+            })
+          })
+        })
+      })
+    })
+  });
+}
+
+
+
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   schemas.establish(db, function() {
@@ -140,6 +192,7 @@ db.once('open', function () {
       seeddepartments()
       seedlatestreviews()
       seedleaguetable()
+      seedcompetitors()
       
     } else {
       console.log("No command specified... run with --help")

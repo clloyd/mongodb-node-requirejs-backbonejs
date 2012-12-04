@@ -31,7 +31,7 @@ define([
       $('#content').html(this.el)
 
       //Make Tab Active
-      $('li#leaguetablemenu').addClass('active')
+      $('li#competitionmenu').addClass('active')
 
       new MapView(this.collection);
     }

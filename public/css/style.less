@@ -7,6 +7,9 @@ html, html a {
     -webkit-font-smoothing: antialiased !important;
 }
 
+#map_canvas label { width: auto; display:inline; }
+#map_canvas img { max-width: none; max-height: none; }
+
 body {
   font-family: 'Open Sans', Helvetica, Sans-Serif;
 }
@@ -175,5 +178,17 @@ th.maincolumn {
   -webkit-transition: all .2s ease-in;
 }
 
+
+#map_summary {
+  .bar {
+    background-color: @red;
+    height: 7px;
+    position: relative;
+    top: 8px;
+  }
+  .table th, .table td {
+    padding: 4px 10px;
+  }
+}
 
 

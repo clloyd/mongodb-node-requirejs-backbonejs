@@ -34,6 +34,22 @@ exports.establish = function(db, callback){
   })
   Models.leaguetable = db.model('League Table', leagueTableSchema)
 
+  //Competitors
+  var termSchema = new mongoose.Schema({
+    term: String,
+    score: Number
+  })
+
+  var CompetitorsSchema = new mongoose.Schema({
+    name: String,
+    lat: Number,
+    lon: Number,
+    phs_master_id: Number,
+    terms: [termSchema]
+  })
+  Models.competitors = db.model('Competitors', CompetitorsSchema)
+
+
   callback()
 
 } 
