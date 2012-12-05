@@ -15,7 +15,7 @@ define([
   'app_dir/collections/competitors',
 
   //Google Maps
-  'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyBSEoXhlN7JRgnHHsL05B4OxCcRF7BTLD4&sensor=false'
+  'async!https://maps.googleapis.com/maps/api/js?v=3.9&key=AIzaSyBSEoXhlN7JRgnHHsL05B4OxCcRF7BTLD4&sensor=false'
 
 ], function($, _, Backbone, WidgetTemplate, MapTemplate, UnpopulatedSummaryTemplate, LoadingSummaryTemplate, SummaryTemplate, InfoWindowTemplate, CompetitionCollection){
   var CompetitionIndexView = Backbone.View.extend({

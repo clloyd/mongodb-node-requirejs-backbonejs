@@ -33,6 +33,9 @@ th.maincolumn {
   right: 1px;
   font-size: 17px;
 }
+#content {
+  border-radius: 8px;
+}
 .widget-title:hover {
   cursor: pointer;
 }
