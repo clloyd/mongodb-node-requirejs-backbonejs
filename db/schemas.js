@@ -1,5 +1,6 @@
 exports.establish = function(db, callback){
   var mongoose = require('mongoose')
+  var Models = {}
   //Set Up Schemas
   //DEPARTMENTS
   var departmentSchema = new mongoose.Schema({
@@ -50,6 +51,6 @@ exports.establish = function(db, callback){
   Models.competitors = db.model('Competitors', CompetitorsSchema)
 
 
-  callback()
+  callback(Models)
 
 } 
