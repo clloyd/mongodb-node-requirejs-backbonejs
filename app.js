@@ -101,13 +101,14 @@ app.configure('production', function(){
 });
 
 //Store my models in an object
-Models = {}
 
 //Set up database
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-  schemas.establish(db, function() {
+  schemas.establish(db, function(models) {
+    //Lets make Models global
+    Models = models
     console.log("Database connection successful and setup".green)
     //Start server only after database setup
     http.createServer(app).listen(app.get('port'), function(){
