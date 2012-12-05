@@ -69,7 +69,7 @@ Folder Structure
     |   |-- css
     |   |   |-- style.less  <-- Custom CSS here
     |   |   |-- vendor.less   <-- LESS file pulling in vendor files from subfolder
-    |   |-- fonts
+    |   |-- fonts <-- this is expecting the ss-standard icon font
     |   |-- img
     |   |-- js
     |       |-- app
