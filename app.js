@@ -100,8 +100,6 @@ app.configure('production', function(){
   app.use(express.static(__dirname + '/public_build'));
 });
 
-//Store my models in an object
-
 //Set up database
 
 db.on('error', console.error.bind(console, 'connection error:'));
