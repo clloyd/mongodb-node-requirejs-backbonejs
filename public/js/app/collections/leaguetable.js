@@ -8,7 +8,8 @@ define([
     model: LeagueTablePositionModel,
     url: '/leaguetable',
     comparator: function(position) {
-      return position.get('rank')
+      
+      return position.get('position')
     }
   });
   // You don't usually return a collection instantiated
